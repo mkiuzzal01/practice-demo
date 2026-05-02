@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+.title-primary {
+  font-size: 40px;
+  line-height: 110%;
+  font-weight: 700;
+  background: linear-gradient(
+    269deg,
+    #624bf5 8.97%,
+    #fe3a81 57.01%,
+    #ffe705 111.46%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.primary-btn {
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(45deg, #624bf5 -22.29%, #fe3a81 117.47%);
+  border: none;
+  border-radius: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
