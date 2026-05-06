@@ -1,31 +1,143 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+:root {
+  --color-primary: #624bf5;
+  --color-secondary: #fe3a81;
+  --color-accent: #ffe705;
+
+  --radius-md: 12px;
+  --radius-lg: 9999px;
+
+  --transition-base: all 0.3s ease;
+}
 
 .title-primary {
-  font-size: 40px;
-  line-height: 110%;
-  font-weight: 700;
+  @apply font-bold leading-tight;
+
+  font-size: clamp(28px, 5vw, 40px);
+
   background: linear-gradient(
     269deg,
-    #624bf5 8.97%,
-    #fe3a81 57.01%,
-    #ffe705 111.46%
+    var(--color-primary) 8.97%,
+    var(--color-secondary) 57.01%,
+    var(--color-accent) 111.46%
   );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.text-secondary {
+  font-size: clamp(28px, 5vw, 40px);
+
+  background: linear-gradient(
+    180deg,
+    var(--color-secondary) 79.53% var(--color-primary) 17.38%
+  );
+
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.primary-btn {
-  cursor: pointer;
-  color: white;
+.btn-primary {
+  @apply inline-flex items-center justify-center text-white font-medium;
+  border-radius: var(--radius-md);
   background: linear-gradient(45deg, #624bf5 -22.29%, #fe3a81 117.47%);
-  border: none;
-  border-radius: 14px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  transition: var(--transition-base);
 }
 
-.primary-btn:hover {
+.btn-primary:hover {
   opacity: 0.9;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  opacity: 0.85;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  opacity: 0.85;
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.bg-primary-gradient {
+  @apply bg-gradient-to-b;
+
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 158, 187, 0.4) 0%,
+    rgba(235, 209, 255, 0.4) 100%
+  );
+}
+
+.bg-soft-gradient {
+  @apply bg-linear-to-r from-[#f5f7ff] to-[#ffeaf3];
+}
+
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--color-secondary) 15.98%,
+    var(--color-primary) 83.52%
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-gradient {
+  @apply inline-flex items-center justify-center px-6 py-3 text-white font-medium rounded-full;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  background-size: 200% 200%;
+  transition: var(--transition-base);
+}
+
+.btn-gradient:hover {
+  background-position: right center;
+}
+
+/* list */
+
+.list-gradient {
+  position: relative;
+  padding-left: 16px;
+  color: #1f2937; /* neutral-800 */
+
+  border-radius: 3px;
+}
+
+/* Gradient bullet / accent line */
+.list-gradient::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+
+  background: var(
+    --Landing-Gradient,
+    linear-gradient(45deg, #624bf5 -22.29%, #fe3a81 117.47%)
+  );
 }

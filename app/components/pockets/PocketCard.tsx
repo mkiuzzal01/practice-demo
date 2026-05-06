@@ -1,40 +1,28 @@
-import Image, { StaticImageData } from "next/image";
-import verticalLine from "@/public/assets/pockets/varticalLine.svg";
+import Image, { StaticImageData } from 'next/image';
+import verticalLine from '@/public/assets/pockets/varticalLine.svg';
 
 interface Props {
   img: string | StaticImageData;
   description: string;
-  showDivider?: boolean;
 }
 
-export default function PocketCard({
-  img,
-  description,
-  showDivider = true,
-}: Props) {
+export default function PocketCard({ img, description }: Props) {
   return (
-    <div className="flex flex-col justify-center items-center gap-4 w-full">
+    <div className="w-[196px] flex flex-col items-center text-center gap-4">
       {/* Icon */}
-      <div className="shadow p-5 rounded-lg">
-        {typeof img === "object" ? (
-          <Image
-            width={40}
-            height={40}
-            src={img as StaticImageData}
-            alt="icon"
-          />
-        ) : (
-          <Image width={40} height={40} src={img as string} alt="icon" />
-        )}
+      <div className="w-[100px] h-[100px] flex items-center justify-center shadow rounded-[16px]">
+        <Image src={img} alt="icon" />
       </div>
 
-      {showDivider && (
-        <div className="h-10 flex items-center">
-          <Image src={verticalLine} alt="divider" />
-        </div>
-      )}
+      {/* Connector line */}
+      <div className="flex justify-center">
+        <Image src={verticalLine} alt="divider" />
+      </div>
 
-      <p className="text-center font-bold text-[#0F004A]">{description}</p>
+      {/* Text */}
+      <p className="text-[16px] font-semibold text-[#0F004A] leading-snug">
+        {description}
+      </p>
     </div>
   );
 }
